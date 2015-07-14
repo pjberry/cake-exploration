@@ -3,9 +3,9 @@ trait UserRepositoryComponent {
   def userLocator:  UserLocator
   def userUpdater:  UserUpdater
 
-  import scala.collection.immutable.Seq
+  import scala.collection.mutable.Buffer
   trait UserLocator {
-    def findAll:  Seq[User]
+    def findAll:  Buffer[User]
   }
 
   trait UserUpdater {
