@@ -8,7 +8,9 @@ trait UserRepositoryJPAComponent extends UserRepositoryComponent {
 
   class UserLocatorJPA(val em: EntityManager) extends UserLocator {
     import scala.collection.JavaConverters._
-    def findAll = em.createQuery("from User").getResultList.asScala[User]
+    import scala.collection.mutable.Buffer
+    
+    def findAll: Buffer[User] = em.createQuery("from User", classOf[User]).getResultList().asScala
   }
 
   class UserUpdaterJPA(val em: EntityManager) extends UserUpdater {
